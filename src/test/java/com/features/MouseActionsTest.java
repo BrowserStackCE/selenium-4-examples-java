@@ -11,11 +11,13 @@ import java.time.Duration;
 import static org.testng.Assert.assertEquals;
 
 public class MouseActionsTest extends BaseTest {
+    
+    private static final String URL = "https://mousetester.com/";
 
     @Test(description = "Click element")
     public void clickElement() {
         WebDriver driver = getDriver();
-        driver.get("https://mousetester.com/");
+        driver.get(URL);
         Actions actions = new Actions(driver);
         WebElement clickMe = driver.findElement(By.id("clickMe"));
         actions.click(clickMe).perform();
@@ -25,7 +27,7 @@ public class MouseActionsTest extends BaseTest {
     @Test(description = "Click and hold element")
     public void clickAndHoldElement() {
         WebDriver driver = getDriver();
-        driver.get("https://mousetester.com/");
+        driver.get(URL);
         Actions actions = new Actions(driver);
         WebElement clickMe = driver.findElement(By.id("clickMe"));
         actions.clickAndHold(clickMe).pause(Duration.ofSeconds(5)).release().perform();
@@ -35,7 +37,7 @@ public class MouseActionsTest extends BaseTest {
     @Test(description = "Double click element")
     public void doubleClickElement() {
         WebDriver driver = getDriver();
-        driver.get("https://mousetester.com/");
+        driver.get(URL);
         Actions actions = new Actions(driver);
         WebElement clickMe = driver.findElement(By.id("clickMe"));
         actions.doubleClick(clickMe).perform();
@@ -45,7 +47,7 @@ public class MouseActionsTest extends BaseTest {
     @Test(description = "Right click element")
     public void rightClickElement() {
         WebDriver driver = getDriver();
-        driver.get("https://mousetester.com/");
+        driver.get(URL);
         Actions actions = new Actions(driver);
         WebElement clickMe = driver.findElement(By.id("clickMe"));
         actions.contextClick(clickMe).perform();

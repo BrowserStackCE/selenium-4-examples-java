@@ -1,0 +1,19 @@
+{
+  "browserstackOptions": {
+    "projectName": "BrowserStack",
+    "buildName": "Selenium-4 Features",
+    "os": "Windows",
+    "osVersion": "10",
+    "debug": true,
+    "seleniumVersion": "4.0.0",
+    "seleniumCdp": true
+  },
+  "capabilities": {
+    "browserName": "Chrome",
+    "browserVersion": "96"
+  },
+  "geolocationOptions": {
+    "googlegeolocationaccess.enabled": true,
+    "profile.default_content_setting_values.geolocation": 1
+  }
+}

@@ -2,6 +2,16 @@
 
 [Selenium](https://www.browserstack.com/selenium) has been the most preferred tool suite when it comes to automated cross-browser testing of web applications. Simon Stewart (creator of WebDriver and core contributor to Selenium projects) had publicly introduced Selenium 4 in 2018. Since then, Selenium 4 has been gaining immense traction for its new makeover in terms of features and functionalities.
 
+This repo provides BrowserStack Automate's integration with Selenium 4 showcasing key features.
+
+---
+
+## Setup
+
+- Clone the repo
+- Install dependencies `mvn compile`
+- Update the environment variables with your [BrowserStack Username and Access Key](https://www.browserstack.com/accounts/settings)
+
 To run all the Selenium 4 features present in the repo, run the below mentioned maven command.
 
 ``` 

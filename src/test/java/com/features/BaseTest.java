@@ -1,6 +1,7 @@
 package com.features;
 
-import org.openqa.selenium.JavascriptExecutor;
+import com.utility.SessionStatus;
+import io.restassured.path.json.JsonPath;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -8,6 +9,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -21,27 +23,21 @@ public class BaseTest {
 
     private static final ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
+    private final SessionStatus status = new SessionStatus();
+
     public static WebDriver getDriver() {
         return driverThread.get();
     }
 
     @BeforeMethod(alwaysRun = true)
     public void setup(ITestResult tr) throws MalformedURLException {
-        Map<String, Object> browserstackOptions = new HashMap<>();
+        JsonPath jsonPath = JsonPath.from(new File("src/test/resources/capabilities.json"));
+        Map<String, Object> browserstackOptions = new HashMap<>(jsonPath.getMap("browserstackOptions"));
         browserstackOptions.put("userName", USERNAME);
         browserstackOptions.put("accessKey", ACCESS_KEY);
-        browserstackOptions.put("projectName", "BrowserStack");
-        browserstackOptions.put("buildName", "Selenium-4 Features");
         browserstackOptions.put("sessionName", tr.getMethod().getDescription());
-        browserstackOptions.put("os", "Windows");
-        browserstackOptions.put("osVersion", "10");
-        browserstackOptions.put("debug", true);
-        browserstackOptions.put("seleniumVersion", "4.0.0");
-        browserstackOptions.put("seleniumCdp", true);
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", "Chrome");
-        capabilities.setCapability("browserVersion", "96");
+        DesiredCapabilities capabilities = new DesiredCapabilities(jsonPath.getMap("capabilities"));
         capabilities.setCapability("bstack:options", browserstackOptions);
 
         driverThread.set(new RemoteWebDriver(new URL(URL), capabilities));
@@ -49,12 +45,7 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void teardown(ITestResult tr) {
-        JavascriptExecutor jse = (JavascriptExecutor) driverThread.get();
-        if (tr.isSuccess()) {
-            jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\"}}");
-        } else {
-            jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"failed\", \"reason\": \"" + tr.getThrowable().getClass().getSimpleName() + "\"}}");
-        }
+        status.markTestSessionStatus(driverThread.get(), tr);
         driverThread.get().quit();
     }
 
