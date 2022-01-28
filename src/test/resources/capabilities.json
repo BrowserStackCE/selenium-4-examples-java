@@ -1,6 +1,6 @@
 {
   "browserstackOptions": {
-    "projectName": "BrowserStack",
+    "projectName": "Selenium-4 Examples",
     "buildName": "Selenium-4 Features",
     "os": "Windows",
     "osVersion": "10",

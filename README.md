@@ -1,5 +1,7 @@
 # Selenium 4: Understanding Key Features <a href="https://www.browserstack.com/"><img src="https://www.vectorlogo.zone/logos/browserstack/browserstack-icon.svg" alt="BrowserStack" height="30"/></a> <a href="https://java.com"><img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" height="30" /></a> <a href="https://www.selenium.dev/"><img src="https://seeklogo.com/images/S/selenium-logo-DB9103D7CF-seeklogo.com.png" alt="Selenium" height="30" /></a>
 
+[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=SkY5aTNjQkJGekNDNmpGMlVJOXo0anZqVzZYMXdJSzhDT1piZ3IyTzBPOD0tLS8vbjFOcEN0TDZaTHcveG5WRk9GTlE9PQ==--162f8400d22ee6afe02f8674e54a31747e7e08c3)](https://automate.browserstack.com/public-build/SkY5aTNjQkJGekNDNmpGMlVJOXo0anZqVzZYMXdJSzhDT1piZ3IyTzBPOD0tLS8vbjFOcEN0TDZaTHcveG5WRk9GTlE9PQ==--162f8400d22ee6afe02f8674e54a31747e7e08c3)
+
 [Selenium](https://www.browserstack.com/selenium) has been the most preferred tool suite when it comes to automated cross-browser testing of web applications. Simon Stewart (creator of WebDriver and core contributor to Selenium projects) had publicly introduced Selenium 4 in 2018. Since then, Selenium 4 has been gaining immense traction for its new makeover in terms of features and functionalities.
 
 This repo provides BrowserStack Automate's integration with Selenium 4 showcasing key features.
